@@ -3,7 +3,7 @@ Project name- Community.
 ## Problem Statement :
 Local Community Engagement Platform: Develop a web application that connects community members, local businesses, and organizations for sharing news, organizing events, and encouraging local participation.
 
-Solution overview:
+## Solution overview:
 - A unified platform to create, share, and RSVP to community events, ensuring everyone stays informed and engaged.
 - A dedicated space for listing and signing up for volunteer opportunities, encouraging active community participation and support.
 - A real-time feed for sharing news, updates, and announcements.
