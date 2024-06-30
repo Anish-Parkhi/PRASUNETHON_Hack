@@ -137,3 +137,32 @@
   font-family: poppins;
   margin-bottom: 1rem;
 }
+
+.marketplaceBackgroundContainer{
+  position: relative;
+  background-image: linear-gradient(180deg, #ffffff 0%, #ecfffb 100%);
+  background-image: url('../assets/market.svg'); /* Adjust path if needed */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 40vh;
+}
+
+.marketPlaceInnerContainer{
+  position: relative;
+  top: -170px;
+}
+
+.marketBottomDiv{
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFECCF 45.22%);
+  padding: 20px; /* You can adjust padding as needed */
+  border-radius: 8px; /* Optional: Add border radius for rounded corners */
+  min-height: 25rem;
+}
+
+.marketplaceFontContainer{
+  color: #000000b0;
+  font-family: poppins;
+  font-weight: 700;
+  font-size: 4rem;
+}

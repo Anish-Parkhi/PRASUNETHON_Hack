@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import Navbar from '../components/Navbar/Navbar';
 import styles from './styles.module.css';
 
@@ -10,6 +11,8 @@ function EventRegistration() {
     phone: '',
     noOfPeople: '',
   });
+
+  const navigate = useNavigate();
 
   useEffect(() => {
     const userString = localStorage.getItem('user');
@@ -41,7 +44,7 @@ function EventRegistration() {
         eventRegistration
       );
       if (res) {
-        alert('Registration Completed');
+        navigate('/done');
       }
     } catch (error) {
       console.log(error);
