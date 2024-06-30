@@ -65,6 +65,8 @@ const EventDetailsSchema = new mongoose.Schema({
     eventName : String,
     date : Date,
     venue : String,
+    description: String,
+    imageURL: String,
     registeredCandidate : [{
         fullname : String,
         phone : Number

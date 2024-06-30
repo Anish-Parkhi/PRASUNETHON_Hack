@@ -2,14 +2,14 @@ import propTypes from 'prop-types';
 import event1 from '../../assets/event2.jpg';
 import { useNavigate } from 'react-router-dom';
 
-function EventCard({ eventName, venue, date, description }) {
+function EventCard({ eventName, venue, date, description, imageURL }) {
   const navigate = useNavigate();
   return (
     <div
       style={{ fontFamily: 'poppins' }}
       className="flex p-4 gap-3 self-center shadow-lg border-2 rounded-md w-4/6 "
     >
-      <img className="w-1/3 rounded-md object-cover" src={event1} />
+      <img className="w-1/3 rounded-md object-cover" src={imageURL} />
       <div className="flex flex-col text-left gap-2">
         <div className="flex flex-row justify-between">
           <h2 className="text-lg font-bold ">{eventName}</h2>

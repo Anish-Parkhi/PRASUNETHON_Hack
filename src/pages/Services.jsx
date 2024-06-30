@@ -7,7 +7,7 @@ function Services() {
   return (
     <div className={`pb-4`}>
       <div className={styles.servicesOuterDiv}>
-        <Navbar />
+        <Navbar  />
         <div className={`${styles.serviceTopFont} m-auto self-center text-8xl font-bold`}>Services near you</div>
       </div>
       <div className={styles.servicesOuterContainer}>

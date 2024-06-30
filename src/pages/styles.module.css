@@ -23,7 +23,11 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+  background: linear-gradient(
+    to bottom,
+    rgba(255, 255, 255, 0) 0%,
+    rgba(255, 255, 255, 1) 100%
+  );
   pointer-events: none; /* Allows interactions to go through the overlay */
 }
 
@@ -65,7 +69,11 @@
   left: 0;
   width: 100%;
   height: 50%; /* Adjust the height as needed for the fade effect */
-  background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  background: linear-gradient(
+    to top,
+    rgba(255, 255, 255, 1),
+    rgba(255, 255, 255, 0)
+  );
   pointer-events: none; /* Allows interactions to go through the overlay */
 }
 
@@ -80,20 +88,20 @@
   /* min-height: 200px; Adjust height as needed */
 }
 
-.servicesOuterContainer{
+.servicesOuterContainer {
   position: relative;
   top: -70px;
   margin: auto;
   justify-content: center;
 }
 
-.serviceTopFont{
-  color: #000000B0;
+.serviceTopFont {
+  color: #000000b0;
   text-align: center;
 }
 
-.eventRegistraionContainer{
-  background: linear-gradient(180deg, #FCFCFE 0%, #FFE7C2 100%);
+.eventRegistraionContainer {
+  background: linear-gradient(180deg, #fcfcfe 0%, #ffe7c2 100%);
   /* min-height: 100vh; */
   display: flex;
   align-items: center;
@@ -101,8 +109,31 @@
   margin-top: 0px;
 }
 
-.facilitesBackgroundContainer{
-  background-image: url('../assets/facilites.svg');
-  height: 100%;
+.facilitesBackgroundContainer {
+  position: relative;
+  background-image: linear-gradient(180deg, #ffffff 0%, #ecfffb 100%);
+  background-image: url('../assets/facilites.svg'); /* Adjust path if needed */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
   min-height: 100vh;
+}
+
+.facilitesBackgroundOverlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50px; /* Adjust height as needed */
+  background: linear-gradient(to top, rgba(0, 0, 255, 0.2), rgba(0, 0, 255, 0));
+  pointer-events: none;
+}
+
+.facilitesFont {
+  color: #000000b0;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
+  font-family: poppins;
+  margin-bottom: 1rem;
 }

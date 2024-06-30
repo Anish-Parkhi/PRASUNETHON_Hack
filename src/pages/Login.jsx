@@ -11,39 +11,46 @@ import Paper from '@mui/material/Paper';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import TextField from '@mui/material/TextField';
 import Typography from '@mui/material/Typography';
-
-function Copyright(props) {
-  return (
-    <Typography
-      variant="body2"
-      color="text.secondary"
-      align="center"
-      {...props}
-    >
-      {'Copyright © '}
-      <Link color="inherit" href="https://mui.com/">
-        Your Website
-      </Link>{' '}
-      {new Date().getFullYear()}
-      {'.'}
-    </Typography>
-  );
-}
-
-// TODO remove, this demo shouldn't need to reset the theme.
+import axios from 'axios';
+import { useContext, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
+import comm from '../assets/comm.svg';
+import userContext from '../context/userContext';
 
 const defaultTheme = createTheme();
 
 export default function Login() {
-  const handleSubmit = (event) => {
+  const { setUser } = useContext(userContext);
+  const navigate = useNavigate();
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    console.log({
-      email: data.get('email'),
-      password: data.get('password'),
-    });
+    try {
+      const res = await axios.post('http://localhost:3000/userlogin', data);
+      if (res.status === 200) {
+        setUser(res.data.user);
+        localStorage.setItem('user', JSON.stringify(res.data.user));
+        navigate('/');
+      }
+    } catch (error) {
+      console.log(error);
+    }
   };
 
+  const [data, setData] = useState({
+    email: '',
+    password: '',
+  });
+  console.log(data);
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setData((prev) => {
+      return {
+        ...prev,
+        [name]: value,
+      };
+    });
+  };
   return (
     <ThemeProvider theme={defaultTheme}>
       <Grid container component="main" sx={{ height: '100vh' }}>
@@ -54,8 +61,7 @@ export default function Login() {
           sm={4}
           md={7}
           sx={{
-            backgroundImage:
-              'url("/static/images/templates/templates-images/sign-in-side-bg.png")',
+            backgroundImage: `url(${comm})`,
             backgroundColor: (t) =>
               t.palette.mode === 'light'
                 ? t.palette.grey[50]
@@ -95,6 +101,7 @@ export default function Login() {
                 name="email"
                 autoComplete="email"
                 autoFocus
+                onChange={handleChange}
               />
               <TextField
                 margin="normal"
@@ -105,6 +112,7 @@ export default function Login() {
                 type="password"
                 id="password"
                 autoComplete="current-password"
+                onChange={handleChange}
               />
               <FormControlLabel
                 control={<Checkbox value="remember" color="primary" />}
@@ -130,7 +138,6 @@ export default function Login() {
                   </Link>
                 </Grid>
               </Grid>
-              <Copyright sx={{ mt: 5 }} />
             </Box>
           </Box>
         </Grid>

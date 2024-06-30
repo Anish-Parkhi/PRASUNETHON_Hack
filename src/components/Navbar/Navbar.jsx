@@ -1,10 +1,14 @@
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import { useNavigate } from 'react-router-dom';
 import styles from './Navbar.module.css';
-function Navbar() {
+// eslint-disable-next-line react/prop-types
+function Navbar({ color = 'white' }) {
   const navigate = useNavigate();
   return (
-    <nav className="p-3 flex justify-between items-center">
+    <nav
+      style={{ backgroundColor: color }}
+      className="p-3 flex justify-between items-center"
+    >
       <div className="p-1 font-normal">
         <div
           onClick={() => navigate('/')}

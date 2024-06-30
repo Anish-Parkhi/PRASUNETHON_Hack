@@ -37,7 +37,7 @@ const facilitiesName = [
   },
   {
     id: 6,
-    name: 'Fitness Center',
+    name: 'Fitness Center and Gym',
     icon: <FitnessCenterIcon sx={{ fontSize: '3rem' }} />,
   },
   {
@@ -55,14 +55,14 @@ const facilitiesName = [
 function Facilites() {
   return (
     <div>
-      <Navbar />
-      <div className={styles.facilitesBackgroundContainer} >
-        <div>Facilites Provided</div>
+      <Navbar color="#89CFDB" />
+      <div className={styles.facilitesBackgroundContainer}>
+        <div className={styles.facilitesFont}>Facilites Provided</div>
 
-        <div className="w-3/4 m-auto flex justify-between gap-3  flex-wrap">
+        <div className="w-3/4  m-auto flex justify-between gap-3  flex-wrap">
           {facilitiesName.map((facility) => (
             <div
-              className="border-2 rounded-md shadow-md p-8 gap-3 flex flex-col justify-center text-center w-1/5"
+              className="border-2 min-h-12 bg-white rounded-lg drop-shadow-xl shadow-md p-8 gap-3 flex flex-col justify-center text-center w-1/5"
               key={facility.id}
             >
               <div>{facility.icon}</div>

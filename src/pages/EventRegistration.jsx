@@ -5,9 +5,9 @@ function EventRegistration() {
   return (
     <div className={styles.eventRegistraionContainer}>
       <Navbar />
-      <div>
+      <div >
         <form className="mt-0 mb-20 container border-2 w-2/3 rounded-lg shadow-lg mx-auto bg-white">
-          <div>
+          <div >
             <div className="flex flex-col items-center justify-center">
               <h1 className="text-4xl font-bold text-center mt-10">
                 Online Event Registration Form
