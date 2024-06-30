@@ -333,7 +333,7 @@ app.post("/order",async function(req,res){
     }
 })
 
-app.get("viewEvents",async function(req,res){
+app.get("/viewEvents",async function(req,res){
     const event = await Event.find()
     if(event){
         res.status(200).json({
