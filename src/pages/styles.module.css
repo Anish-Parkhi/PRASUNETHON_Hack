@@ -166,3 +166,23 @@
   font-weight: 700;
   font-size: 4rem;
 }
+
+.volunteerBGContainer {
+  position: relative;
+  background-image: 
+    linear-gradient(180deg, rgba(255, 255, 255, 0) 0%, #FFECCF 45.22%), /* Gradient layer */
+    url('../assets/volunteer.svg'); /* Image layer */
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  min-height: 140vh;
+}
+
+.volunteerFont{
+  color: #000000b0;
+  text-align: center;
+  font-size: 4rem;
+  font-weight: bold;
+  font-family: poppins;
+  margin-bottom: 1rem;
+}

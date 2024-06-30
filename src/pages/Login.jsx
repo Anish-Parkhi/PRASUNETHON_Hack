@@ -14,7 +14,6 @@ import Typography from '@mui/material/Typography';
 import axios from 'axios';
 import { useContext, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import comm from '../assets/comm.svg';
 import userContext from '../context/userContext';
 
 const defaultTheme = createTheme();
@@ -51,26 +50,31 @@ export default function Login() {
       };
     });
   };
+
   return (
     <ThemeProvider theme={defaultTheme}>
-      <Grid container component="main" sx={{ height: '100vh' }}>
+      <Grid
+        container
+        component="main"
+        sx={{ height: '80vh', marginTop: '2rem' }}
+      >
         <CssBaseline />
         <Grid
           item
-          xs={false}
-          sm={4}
-          md={7}
+          xs={12}
+          sm={8}
+          md={5}
+          component={Paper}
+          elevation={6}
+          square
           sx={{
-            backgroundImage: `url(${comm})`,
-            backgroundColor: (t) =>
-              t.palette.mode === 'light'
-                ? t.palette.grey[50]
-                : t.palette.grey[900],
-            backgroundSize: 'cover',
-            backgroundPosition: 'left',
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            justifyContent: 'center',
+            mx: 'auto',
           }}
-        />
-        <Grid item xs={12} sm={8} md={5} component={Paper} elevation={6} square>
+        >
           <Box
             sx={{
               my: 8,

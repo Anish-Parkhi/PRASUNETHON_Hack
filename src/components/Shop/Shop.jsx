@@ -1,6 +1,7 @@
 import ArrowDropDownIcon from '@mui/icons-material/ArrowDropDown';
 import ShoppingCartIcon from '@mui/icons-material/ShoppingCart';
-import React from 'react';
+import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import image1 from '../../assets/shop/i1.svg';
 import image2 from '../../assets/shop/i2.svg';
 import image3 from '../../assets/shop/i3.svg';
@@ -70,9 +71,19 @@ const shopData = [
   },
 ];
 
-
-
 function Shop() {
+  const [cart, setCart] = useState([]);
+
+  const addToCart = (item) => {
+    setCart([...cart, item]);
+  };
+
+  const navigate = useNavigate();
+
+  const redirectToCart = () => {
+    navigate('/cart', { state: { cart: cart } });
+  };
+
   return (
     <div
       style={{
@@ -86,16 +97,19 @@ function Shop() {
           <div className="p-2 rounded-md w-36 text-left border-black bg-black text-white">
             All filters
           </div>
-            <div className="p-2 rounded-md w-36 text-left border-black bg-black text-white">
-              Sort by
-              <ArrowDropDownIcon />
-            </div>
+          <div className="p-2 rounded-md w-36 text-left border-black bg-black text-white">
+            Sort by
+            <ArrowDropDownIcon />
+          </div>
           <input
             placeholder="search"
             className="border-2 border-gray-300 rounded-md p-2 w-1/4 focus:outline-none focus:border-blue-500"
           />
-          <div className="ml-auto self-end justify-self-end p-2 rounded-md w-36 text-left border-black bg-black text-white flex flex-row justify-between">
-            <div>Cart</div>
+          <div
+            onClick={redirectToCart}
+            className="ml-auto self-end justify-self-end p-2 rounded-md w-36 text-left border-black bg-black text-white flex flex-row justify-between"
+          >
+            <div className="cursor-pointer">Cart</div>
             <ShoppingCartIcon />
           </div>
         </div>
@@ -116,7 +130,10 @@ function Shop() {
                   <p>{item.quantity}</p>
                   <div className="flex basis-1/3 mt-5 flex-row justify-between">
                     <p>₹ {item.price}</p>
-                    <button className="bg-white text-black border-black border-2 w-2/5 p-1 text-sm rounded-md">
+                    <button
+                      onClick={() => addToCart(item)}
+                      className="bg-white cursor-pointer text-black border-black border-2 w-2/5 p-1 text-sm rounded-md"
+                    >
                       Add
                     </button>
                   </div>

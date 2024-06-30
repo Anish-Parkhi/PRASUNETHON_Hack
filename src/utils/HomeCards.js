@@ -28,14 +28,13 @@ const cardInfo = [
     description: 'All the local services that you will need.',
     icon: DesignServicesIcon,
     to: '/services',
-    
   },
   {
-    id: 4,
-    title: 'Help Desk',
-    description: 'Your queries and issues come this way.',
-    icon: HelpIcon,
-    to: '/helpdesk',
+    id: 3,
+    title: 'Volunteering',
+    description: 'Volunteer for causes that matter the most to you.',
+    icon: GroupsIcon,
+    to: '/volunteer',
   },
   {
     id: 5,
@@ -52,11 +51,11 @@ const cardInfo = [
     to: '/facilities',
   },
   {
-    id: 3,
-    title: 'Volunteering',
-    description: 'Volunteer for causes that matter the most to you.',
-    icon: GroupsIcon,
-    to: '/volunteering',
+    id: 4,
+    title: 'Help Desk',
+    description: 'Your queries and issues come this way.',
+    icon: HelpIcon,
+    to: '/helpdesk',
   },
   {
     id: 8,

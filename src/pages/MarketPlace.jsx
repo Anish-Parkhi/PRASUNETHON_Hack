@@ -32,7 +32,7 @@ function MarketPlace() {
 
   return (
     <div>
-      <Navbar />
+      <Navbar color='#FEFBEA' />
       <div className={` container py-4`}>
         <div className={styles.marketplaceBackgroundContainer}></div>
         <div className={styles.marketPlaceInnerContainer}>
