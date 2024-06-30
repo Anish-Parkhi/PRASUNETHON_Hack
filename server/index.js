@@ -333,18 +333,19 @@ app.post('/order', async function (req, res) {
   }
 });
 
-app.get('viewEvents', async function (req, res) {
-  const event = await Event.find();
-  if (event) {
-    res.status(200).json({
-      msg: event,
-    });
-  } else {
-    res.status(400).json({
-      msg: 'Error Occurred',
-    });
-  }
-});
+app.get("/viewEvents",async function(req,res){
+    const event = await Event.find()
+    if(event){
+        res.status(200).json({
+            msg : event
+        })
+    }
+    else{
+        res.status(400).json({
+            msg : "Error Occurred"
+        })
+    }
+})
 
 app.post('/eventRegistration', async function (req, res) {
   const email = req.body.email;
