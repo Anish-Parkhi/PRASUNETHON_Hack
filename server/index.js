@@ -7,6 +7,7 @@ const {
   Flat,
   Notice,
   Emergency,
+  Shops,
   Orders,
   AddToCart,
   Event,
@@ -209,6 +210,48 @@ app.put('/moreDetails', async function (req, res) {
     });
   }
 });
+
+app.get("/allShops",async function(req,res){
+    const shops = await Shops.find()
+    let result = []
+    if(shops){
+        for (let index = 0; index < shops.length; index++) {
+            let temp = []
+            let element = shops[index]
+            temp.push(element.shopName)
+            temp.push(element.shopNumber)
+            temp.push(element.location)
+            temp.push(element.description)
+            result.push(temp)
+        }
+        res.status(200).json({
+            msg : result
+        })
+    }
+    else{
+        res.status(400).json({
+            msg : "error occurred"
+        })
+    }
+})
+
+app.get("/items",async function(req,res){
+    const shopName = req.body.shopName
+    const data = await Shops.findOne({
+        shopName : shopName
+    })
+    if(data){
+        res.status(200).json({
+            msg : data.items
+        })
+    }
+    else{
+        res.status(400).json({
+            msg : "Error Occurred"
+        })
+    }
+})
+
 
 app.post("/addToCart",async function(req,res){
     const email = req.body.email
