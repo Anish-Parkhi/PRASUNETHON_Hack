@@ -115,7 +115,7 @@ app.post('/event', async function (req, res) {
     date: date,
     venue: venue,
     description: description,
-    imageURL: imageURL
+    imageURL: imageURL,
   });
 
   if (result) {
@@ -217,32 +217,23 @@ app.put('/moreDetails', async function (req, res) {
 app.post('/eventRegistration', async function (req, res) {
   const email = req.body.email;
   const noOfPeople = req.body.noOfPeople;
-  const data = await User.findOne({
+  const fullname = req.body.fullname;
+  const phone = req.body.phone;
+
+  const result = await Register.create({
+    fullname: fullname,
     email: email,
+    phone: phone,
+    noOfPeople: noOfPeople,
   });
 
-  const fullname = data.fullname;
-  const phone = data.phone;
-  if (data) {
-    const result = await Register.create({
-      fullname: fullname,
-      email: email,
-      phone: phone,
-      noOfPeople: noOfPeople,
+  if (result) {
+    res.status(200).json({
+      msg: 'Registration Completed',
     });
-
-    if (result) {
-      res.status(200).json({
-        msg: 'Registration Completed',
-      });
-    } else {
-      res.status(400).json({
-        msg: 'Registration Failed',
-      });
-    }
   } else {
     res.status(400).json({
-      msg: 'Please Sign up to continue',
+      msg: 'Registration Failed',
     });
   }
 });

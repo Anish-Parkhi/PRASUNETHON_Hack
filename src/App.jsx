@@ -17,7 +17,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index path="/login" element={<Login />} />
-            <Route element={<PrivateRoute />}>
+            {/* <Route element={<PrivateRoute />}> */}
               <Route path="/" element={<Home />} />
               <Route path="/events" element={<Events />} />
               <Route
@@ -26,7 +26,7 @@ function App() {
               />
               <Route path="/services" element={<Services />} />
               <Route path="/facilities" element={<Facilites />} />
-            </Route>
+            {/* </Route> */}
           </Routes>
         </BrowserRouter>
       </UserContextProvider>
