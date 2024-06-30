@@ -8,10 +8,11 @@ const {
   Notice,
   Emergency,
   Orders,
+  AddToCart,
   Event,
   Register,
 } = require('./database');
-const { createNoticeID, createEmergencyID } = require('./methods');
+const { createNoticeID, createEmergencyID, orderID} = require('./methods');
 const { func } = require('prop-types');
 
 const app = express();
@@ -209,10 +210,99 @@ app.put('/moreDetails', async function (req, res) {
   }
 });
 
-// app.post("/orders",async function(req,res){
-//     const itemName = req.body.itemName
-//     const
-// })
+app.post("/addToCart",async function(req,res){
+    const email = req.body.email
+    const itemName = req.body.itemName
+    const itemPrice = req.body.itemPrice
+    const itemQuantity = req.body.itemQuantity
+    const check = await AddToCart.findOne({
+        email : email
+    })
+    if(check){
+        const add = await AddToCart.updateOne({
+            email : email
+        },{
+            $push : {
+                items : [{
+                    itemName : itemName,
+                    itemPrice : itemPrice,
+                    itemQuantity : itemQuantity
+                }]
+            }
+        })
+        if(add){
+            res.status(200).json({
+                msg : "Items added to the cart"
+            })
+        }
+        else{
+            res.status(400).json({
+                msg : "Error occurred"
+            })
+        }
+    }
+    else{
+        const add = await AddToCart.create({
+            email : email,
+            items : [{
+                itemName : itemName,
+                itemPrice : itemPrice,
+                itemQuantity : itemQuantity
+            }]
+        })
+        if(add){
+            res.status(200).json({
+                msg : "Cart created and items added"
+            })
+        }
+        else{
+            res.status(400).json({
+                msg : "Error occurred"
+            })
+        }
+    }
+})
+
+app.post("/order",async function(req,res){
+    const email = req.body.email
+    const user = await User.findOne({
+        email : email
+    })
+    const data = await AddToCart.findOne({
+        email : email
+    })
+
+    const createOrder = await Orders.create({
+        orderID : orderID(),
+        flatNo : user.flatNo,
+        wingNo : user.wingNo,
+        items : data.items
+    })
+    if(createOrder){
+        res.status(200).json({
+            msg : "Order placed"
+        })
+    }
+    else{
+        res.status(400).json({
+            msg : "Error Occurred"
+        })
+    }
+})
+
+app.get("viewEvents",async function(req,res){
+    const event = await Event.find()
+    if(event){
+        res.status(200).json({
+            msg : event
+        })
+    }
+    else{
+        res.status(400).json({
+            msg : "Error Occurred"
+        })
+    }
+})
 
 app.post('/eventRegistration', async function (req, res) {
   const email = req.body.email;

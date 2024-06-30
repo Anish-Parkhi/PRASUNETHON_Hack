@@ -47,7 +47,14 @@ const ShopList = new mongoose.Schema({
     }]
 })
 
-
+const Cart = new mongoose.Schema({
+    email : String,
+    items : [{
+        itemName : String,
+        itemPrice : Number,
+        itemQuantity : Number
+    }]
+})
 
 const Order = new mongoose.Schema({
     orderID : String,
@@ -94,6 +101,7 @@ const Notice = mongoose.model("Notice",NoticeDetailsSchema)
 const Emergency = mongoose.model("EmergencyNotice",EmergencyNoticeSchema)
 const Shops = mongoose.model("Shops",ShopList)
 const Orders = mongoose.model("Order",Order)
+const AddToCart = mongoose.model("Cart",Cart)
 const Event = mongoose.model("Event",EventDetailsSchema)
 const Register = mongoose.model("Registered",EventRegistrationForm)
 const Complaint = mongoose.model("Complaints",RaiseComplaint)
@@ -106,6 +114,7 @@ module.exports = {
     Emergency,
     Shops,
     Orders,
+    AddToCart,
     Event,
     Register,
     Complaint
