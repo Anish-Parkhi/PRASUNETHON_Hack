@@ -1,0 +1,108 @@
+.homeBackgroundContainer {
+  background: linear-gradient(180deg, #ffffff 0%, #ecfffb 100%);
+  height: 100vh;
+}
+.backgroundContainer {
+  background-image: url('../assets/eventBg.svg'); /* Adjust the path if needed */
+  background-size: cover; /* Cover the entire container */
+  background-position: center; /* Center the image */
+  background-repeat: no-repeat; /* Prevent the image from repeating */
+  text-align: center;
+  min-height: 200px; /* Adjust the height as needed */
+  display: flex;
+  align-items: center; /* Center the content vertically */
+  justify-content: center; /* Center the content horizontally */
+  position: relative; /* To use a gradient overlay */
+  width: 100%;
+  background-size: 30%;
+}
+.backgroundContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 1) 100%);
+  pointer-events: none; /* Allows interactions to go through the overlay */
+}
+
+.heading {
+  font-size: 5rem;
+  color: #121212a6;
+  font-weight: bold;
+  font-family: poppins;
+}
+
+.eventsBottomContainer {
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 1) 0%,
+    #ffeccf 45.22%
+  );
+  padding: 20px;
+  text-align: center;
+  min-height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.servicesOuterDiv {
+  background-image: url('../assets/services/servicebg.svg');
+  background-size: 100%;
+  width: 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  height: 50vh;
+  position: relative;
+}
+
+.servicesOuterDiv::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 50%; /* Adjust the height as needed for the fade effect */
+  background: linear-gradient(to top, rgba(255, 255, 255, 1), rgba(255, 255, 255, 0));
+  pointer-events: none; /* Allows interactions to go through the overlay */
+}
+
+.serviesGradientDiv {
+  text-align: center;
+  margin: auto;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0) 0%,
+    #ffeccf 45.22%
+  );
+  /* min-height: 200px; Adjust height as needed */
+}
+
+.servicesOuterContainer{
+  position: relative;
+  top: -70px;
+  margin: auto;
+  justify-content: center;
+}
+
+.serviceTopFont{
+  color: #000000B0;
+  text-align: center;
+}
+
+.eventRegistraionContainer{
+  background: linear-gradient(180deg, #FCFCFE 0%, #FFE7C2 100%);
+  /* min-height: 100vh; */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 0px;
+}
+
+.facilitesBackgroundContainer{
+  background-image: url('../assets/facilites.svg');
+  height: 100%;
+  min-height: 100vh;
+}
